@@ -10,27 +10,36 @@ const fillMissingNamesData = (data) => {
   }
 }
 
-const filterModelsByLocation = (data, location) => {
-  const updatedData = fillMissingNamesData(data)
-
-  return updatedData.filter(model => {
+const filterDataByLocation = (data, location) => {
+  return data.filter(model => {
     const modelLocation = model.location.toString()
     return modelLocation.toLowerCase() == location.toLowerCase()
   })
 }
 
-const displayFilterResults = (data, location) => {
-  const results = filterModelsByLocation(data, location)
-
-  results.length ? results.forEach(model => {
+const displayFilterResults = (filterResults, location) => {
+  filterResults.length ? filterResults.forEach(model => {
     console.log(model.name)
   }) : console.log(`No results were found for the location: ${location}`)
 }
 
-module.exports = {
-  fillMissingNamesData,
-  filterModelsByLocation,
-  displayFilterResults
+const filterModelsByLocation = (data, location) => {
+  // validate data
+
+  // correct missing name data
+  const filledData = fillMissingNamesData(data)
+  // filter the data
+  const filteredData = filterDataByLocation(filledData, location)
+
+  // display the result
+  displayFilterResults(filteredData, location)
 }
 
-displayFilterResults(exampleData, 'Springfield')
+module.exports = {
+  fillMissingNamesData,
+  filterDataByLocation,
+  displayFilterResults,
+  filterModelsByLocation
+}
+
+filterModelsByLocation(exampleData, 'Springfield')

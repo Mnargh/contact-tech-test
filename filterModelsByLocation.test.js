@@ -1,4 +1,4 @@
-const { filterModelsByLocation, displayFilterResults, fillMissingNamesData } = require('./filterModelsByLocation');
+const { fillMissingNamesData, filterDataByLocation, displayFilterResults, filterModelsByLocation } = require('./filterModelsByLocation');
 const exampleData = require('./fixtures/models.json');
 const emptyDetailsData = require('./fixtures/emptyDetailsData.json');
 
@@ -19,7 +19,7 @@ test('Auto fills if no name entered in input data, ', () => {
   )
 })
 
-test('FilterModelsByLocation returns expected data given a location and multiple matches', () => {
+test('FilterDataByLocation returns expected data given a location and multiple matches', () => {
   const expectedResult = [
     {
       "name": "Homer Simpson",
@@ -33,17 +33,28 @@ test('FilterModelsByLocation returns expected data given a location and multiple
     }
   ]
 
-  const fillMissingNamesData = jest.fn();
-  fillMissingNamesData.mockReturnValueOnce(exampleData).mockReturnValueOnce(exampleData).mockReturnValueOnce(exampleData);
-
-  expect(filterModelsByLocation(exampleData, 'springfield')).toEqual(expectedResult)
-  expect(filterModelsByLocation(exampleData, 'Springfield')).toEqual(expectedResult)
-  expect(filterModelsByLocation(exampleData, 'SpringField')).toEqual(expectedResult)
+  expect(filterDataByLocation(exampleData, 'springfield')).toEqual(expectedResult)
+  expect(filterDataByLocation(exampleData, 'Springfield')).toEqual(expectedResult)
+  expect(filterDataByLocation(exampleData, 'SpringField')).toEqual(expectedResult)
 })
 
 test('Logs the correct output from filtered models data', () => {
+
+  const exampleFilteredData = [
+    {
+      "name": "Homer Simpson",
+      "location": "Springfield",
+      "date_of_birth": "1956-05-12"
+    },
+    {
+      "name": "Krusty the Clown",
+      "location": "SpringField",
+      "date_of_birth": "1957-10-29"
+    }
+  ]
+
   console.log = jest.fn()
-  displayFilterResults(exampleData, 'Springfield')
+  displayFilterResults(exampleFilteredData)
 
   expect(console.log.mock.calls[0][0]).toBe('Homer Simpson')
   expect(console.log.mock.calls[1][0]).toBe('Krusty the Clown')
@@ -51,7 +62,7 @@ test('Logs the correct output from filtered models data', () => {
 
 test('Outputs message if no results were found for input location', () => {
   console.log = jest.fn()
-  displayFilterResults(exampleData, 'London')
+  displayFilterResults([], 'London')
 
   expect(console.log.mock.calls[0][0]).toBe('No results were found for the location: London')
 })
