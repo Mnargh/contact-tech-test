@@ -3,8 +3,6 @@ const exampleData = require('./fixtures/models.json');
 
 
 test('FilterByLocation returns expected data given a location and multiple matches', () => {
-  console.log(exampleData);
-
   const expectedResult = [
     {
       "name": "Homer Simpson",
@@ -18,8 +16,7 @@ test('FilterByLocation returns expected data given a location and multiple match
     }
   ]
 
-
-
-  expect(filterByLocation(exampleData, 'Springfield')).toEqual(
-    expectedResult)
+  expect(filterByLocation(exampleData, 'springfield')).toEqual(expectedResult)
+  expect(filterByLocation(exampleData, 'Springfield')).toEqual(expectedResult)
+  expect(filterByLocation(exampleData, 'SpringField')).toEqual(expectedResult)
 })
