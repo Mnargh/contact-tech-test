@@ -1,0 +1,23 @@
+{
+  "name": "contact-tech-test",
+  "version": "1.0.0",
+  "description": "Tech test for Contact",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mnargh/contact-tech-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mnargh/contact-tech-test/issues"
+  },
+  "homepage": "https://github.com/Mnargh/contact-tech-test#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
