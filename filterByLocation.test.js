@@ -31,3 +31,10 @@ test('Logs the correct output from filtered models data', () => {
   expect(console.log.mock.calls[0][0]).toBe('Homer Simpson')
   expect(console.log.mock.calls[1][0]).toBe('Krusty the Clown')
 })
+
+test('Outputs message if no results were found for input location', () => {
+  console.log = jest.fn()
+  displayFilterResults(exampleData, 'London')
+
+  expect(console.log.mock.calls[0][0]).toBe('No results were found for the location: London')
+})
