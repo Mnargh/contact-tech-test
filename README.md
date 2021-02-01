@@ -1,6 +1,8 @@
 # Contact-tech-test
 
-Tech test for Contact
+ [Objective](#objective) | [My Implementation](#My-Implementation) | [How To Run](#How-To-Run) | [Screenshots](#Screenshots) | [Improvements](#improvements)
+
+## Objective
 
 We'd like you to build a program that accepts two inputs:
 
@@ -48,3 +50,43 @@ Your program should output:
 Homer Simpson
 Krusty the Clown
 ```
+
+## Tools Used
+
+[Javascript](https://www.javascript.com/)
+[Jest](https://jestjs.io/)
+
+## How To Run
+
+Clone the repo and go to the directory \
+`git@github.com:Mnargh/contact-tech-test.git && cd contact-tech-test`
+
+Ensure you have [Node.js](https://nodejs.org/en/) installed (tested on version 14.14.3 and upwards)
+
+Install dependencies \
+`npm i`
+
+To run tests
+`npm run test`
+
+To run the program
+`node getModelsInLocation.js`
+
+## Screenshots
+
+
+![Output](./Screenshots/ProgramOutput.png)
+
+![Tests](./Screenshots/PassingTests.png)
+
+## Improvements
+
+Given more time, there are a number of improvements I would add:
+
+1. Use ES6 syntax to import/export functions. I was having difficulty with installing and using Babel with jest so used ES5 "require" in the interest of time.
+
+2. Modify the program so that you could feed in the input data when running the program in the command line, instead of hard-coding what is run in the current file.
+
+3. Parameterise the filtering function so that it could be adapted to filter by any criteria, instead of only by location
+
+4. Consider separating out some of the functions into different files according to responsibility if the complexity, and features of the program grew.
