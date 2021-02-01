@@ -1,12 +1,21 @@
 const exampleData = require('./fixtures/models.json');
 
+const validateIsJSON = (data => {
+  try {
+    JSON.parse(data);
+    return true;
+  } catch {
+    console.error('Data not in JSON format')
+  }
+})
+
 const fillMissingNamesData = (data) => {
   try {
     return data.map(model => (
       model.name ? model : { ...model, name: 'No name entered' }
     ))
   } catch (error) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -25,17 +34,17 @@ const displayFilterResults = (filterResults, location) => {
 
 const filterModelsByLocation = (data, location) => {
   // validate data
-
+  validateIsJSON(data)
   // correct missing name data
   const filledData = fillMissingNamesData(data)
   // filter the data
   const filteredData = filterDataByLocation(filledData, location)
-
   // display the result
   displayFilterResults(filteredData, location)
 }
 
 module.exports = {
+  validateIsJSON,
   fillMissingNamesData,
   filterDataByLocation,
   displayFilterResults,

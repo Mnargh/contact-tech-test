@@ -1,4 +1,9 @@
-const { fillMissingNamesData, filterDataByLocation, displayFilterResults, filterModelsByLocation } = require('./filterModelsByLocation');
+const {
+  fillMissingNamesData,
+  filterDataByLocation,
+  displayFilterResults,
+  filterModelsByLocation
+} = require('./filterModelsByLocation');
 const exampleData = require('./fixtures/models.json');
 const emptyDetailsData = require('./fixtures/emptyDetailsData.json');
 
