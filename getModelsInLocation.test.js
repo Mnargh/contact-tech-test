@@ -1,14 +1,14 @@
 const {
-  fillMissingNamesData,
+  fillMissingNames,
   filterDataByLocation,
   displayFilterResults,
-  filterModelsByLocation
-} = require('./filterModelsByLocation');
+  getModelsInLocation
+} = require('./getModelsInLocation');
 const exampleData = require('./fixtures/models.json');
 const emptyDetailsData = require('./fixtures/emptyDetailsData.json');
 
 test('Auto fills if no name entered in input data, ', () => {
-  expect(fillMissingNamesData(emptyDetailsData)).toEqual(
+  expect(fillMissingNames(emptyDetailsData)).toEqual(
     [
       {
         "name": "No name entered",
