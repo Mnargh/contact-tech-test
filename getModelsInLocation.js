@@ -1,6 +1,5 @@
 
-import * as exampleJSON from './fixtures/models.json';
-const exampleData = { "default": exampleJSON }
+const exampleData = require('./fixtures/models.json');
 
 const validateIsJSON = (data => {
   try {
@@ -13,7 +12,6 @@ const validateIsJSON = (data => {
 })
 
 const fillMissingNames = (data) => {
-  console.log(data)
   try {
     return data.map(model => (
       model.name ? model : { ...model, name: 'No name entered' }

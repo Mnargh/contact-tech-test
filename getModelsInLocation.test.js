@@ -8,7 +8,7 @@ import {
 const exampleData = require('./fixtures/models.json');
 const emptyDetailsData = require('./fixtures/emptyDetailsData.json');
 
-test.only('Auto fills if no name entered in input data, ', () => {
+test('Auto fills if no name entered in input data, ', () => {
   console.log(emptyDetailsData)
 
   expect(fillMissingNames(emptyDetailsData)).toEqual(
