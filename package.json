@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Tech test for Contact",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "jest"
   },
@@ -18,6 +19,12 @@
   },
   "homepage": "https://github.com/Mnargh/contact-tech-test#readme",
   "devDependencies": {
-    "jest": "^26.6.3"
+    "@babel/preset-env": "^7.12.13",
+    "jest": "^26.6.3",
+    "json-loader": "^0.5.7"
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.13",
+    "babel-jest": "^26.6.3"
   }
 }
