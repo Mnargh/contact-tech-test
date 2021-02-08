@@ -1,13 +1,16 @@
-const {
+import {
   fillMissingNames,
   filterDataByLocation,
   displayFilterResults,
   getModelsInLocation
-} = require('./getModelsInLocation');
+} from './getModelsInLocation';
+
 const exampleData = require('./fixtures/models.json');
 const emptyDetailsData = require('./fixtures/emptyDetailsData.json');
 
 test('Auto fills if no name entered in input data, ', () => {
+  console.log(emptyDetailsData)
+
   expect(fillMissingNames(emptyDetailsData)).toEqual(
     [
       {
@@ -70,5 +73,12 @@ test('Outputs message if no results were found for input location', () => {
   displayFilterResults([], 'London')
 
   expect(console.log.mock.calls[0][0]).toBe('No results were found for the location: London')
+})
+
+test('getModelsInLocation outputs correct names given some models data', () => {
+  console.log = jest.fn()
+  getModelsInLocation(exampleData, 'Springfield')
+  expect(console.log.mock.calls[0][0]).toBe('Homer Simpson')
+  expect(console.log.mock.calls[1][0]).toBe('Krusty the Clown')
 })
 

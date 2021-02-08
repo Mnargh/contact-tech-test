@@ -1,3 +1,4 @@
+
 const exampleData = require('./fixtures/models.json');
 
 const validateIsJSON = (data => {
@@ -16,7 +17,7 @@ const fillMissingNames = (data) => {
       model.name ? model : { ...model, name: 'No name entered' }
     ))
   } catch (error) {
-    console.error(err)
+    console.error(error)
   }
 }
 
@@ -44,12 +45,6 @@ const getModelsInLocation = (data, location) => {
   displayFilterResults(filteredData, location)
 }
 
-module.exports = {
-  validateIsJSON,
-  fillMissingNames,
-  filterDataByLocation,
-  displayFilterResults,
-  getModelsInLocation
-}
+export { getModelsInLocation, displayFilterResults, filterDataByLocation, fillMissingNames }
 
 getModelsInLocation(exampleData, 'Springfield')
