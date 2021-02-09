@@ -29,12 +29,17 @@ const filterDataByLocation = (data, location) => {
   })
 }
 
-
-// function to calculate age
 const calcModelAge = (dateOfBirth) => {
   const now = moment()
   const dob = moment(dateOfBirth)
   return now.diff(dob, 'years')
+}
+
+const filterDataByAge = (data, age) => {
+  return data.filter(model => {
+    const modelAge = calcModelAge(model.date_of_birth)
+    return modelAge == age
+  })
 }
 
 const displayFilterResults = (filterResults, location) => {
@@ -54,6 +59,6 @@ const getModelsInLocation = (data, location) => {
   displayFilterResults(filteredData, location)
 }
 
-export { getModelsInLocation, displayFilterResults, filterDataByLocation, fillMissingNames, calcModelAge }
+export { getModelsInLocation, displayFilterResults, filterDataByLocation, fillMissingNames, calcModelAge, filterDataByAge }
 
 getModelsInLocation(exampleData, 'Springfield')

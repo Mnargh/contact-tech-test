@@ -1,6 +1,7 @@
 import {
   fillMissingNames,
   filterDataByLocation,
+  filterDataByAge,
   displayFilterResults,
   getModelsInLocation,
   calcModelAge
@@ -83,6 +84,18 @@ test('getModelsInLocation outputs correct names given some models data', () => {
   expect(console.log.mock.calls[1][0]).toBe('Krusty the Clown')
 })
 
-test.only('Calculate age function returns the age given a date of birth', () => {
+test('Calculate age function returns the age given a date of birth', () => {
   expect(calcModelAge("1944-11-17")).toEqual(76)
+})
+
+test.only('filterDataByAge returns expected models given an age to filter by', () => {
+
+  const expectedResult = [
+    {
+    "name": "Frank Reynolds",
+    "location": "Philidelphia",
+    "date_of_birth": "1944-11-17"
+    }
+  ]
+  expect(filterDataByAge(exampleData, 76)).toEqual(expectedResult)
 })
