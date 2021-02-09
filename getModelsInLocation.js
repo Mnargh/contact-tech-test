@@ -1,3 +1,4 @@
+import moment from 'moment'
 
 const exampleData = require('./fixtures/models.json');
 
@@ -28,6 +29,14 @@ const filterDataByLocation = (data, location) => {
   })
 }
 
+
+// function to calculate age
+const calcModelAge = (dateOfBirth) => {
+  const now = moment()
+  const dob = moment(dateOfBirth)
+  return now.diff(dob, 'years')
+}
+
 const displayFilterResults = (filterResults, location) => {
   filterResults.length ? filterResults.forEach(model => {
     console.log(model.name)
@@ -45,6 +54,6 @@ const getModelsInLocation = (data, location) => {
   displayFilterResults(filteredData, location)
 }
 
-export { getModelsInLocation, displayFilterResults, filterDataByLocation, fillMissingNames }
+export { getModelsInLocation, displayFilterResults, filterDataByLocation, fillMissingNames, calcModelAge }
 
 getModelsInLocation(exampleData, 'Springfield')

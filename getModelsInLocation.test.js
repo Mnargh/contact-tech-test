@@ -2,7 +2,8 @@ import {
   fillMissingNames,
   filterDataByLocation,
   displayFilterResults,
-  getModelsInLocation
+  getModelsInLocation,
+  calcModelAge
 } from './getModelsInLocation';
 
 const exampleData = require('./fixtures/models.json');
@@ -82,3 +83,6 @@ test('getModelsInLocation outputs correct names given some models data', () => {
   expect(console.log.mock.calls[1][0]).toBe('Krusty the Clown')
 })
 
+test.only('Calculate age function returns the age given a date of birth', () => {
+  expect(calcModelAge("1944-11-17")).toEqual(76)
+})
