@@ -36,10 +36,13 @@ const calcModelAge = (dateOfBirth) => {
 }
 
 const filterDataByAge = (data, age) => {
-  return data.filter(model => {
-    const modelAge = calcModelAge(model.date_of_birth)
-    return modelAge == age
-  })
+  if (age) {
+    return data.filter(model => {
+      const modelAge = calcModelAge(model.date_of_birth)
+      return modelAge == age
+    })
+  } 
+  else return data
 }
 
 const displayFilterResults = (filterResults, location) => {
@@ -48,13 +51,13 @@ const displayFilterResults = (filterResults, location) => {
   }) : console.log(`No results were found for the location: ${location}`)
 }
 
-const getModelsInLocation = (data, location) => {
+const getModelsInLocation = (data, location, age) => {
   // validate data
   validateIsJSON(data)
   // correct missing name data
   const filledData = fillMissingNames(data)
   // filter the data
-  const filteredData = filterDataByLocation(filledData, location)
+  const filteredData = filterDataByAge(filterDataByLocation(filledData, location), age)
   // display the result
   displayFilterResults(filteredData, location)
 }

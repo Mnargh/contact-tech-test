@@ -88,7 +88,7 @@ test('Calculate age function returns the age given a date of birth', () => {
   expect(calcModelAge("1944-11-17")).toEqual(76)
 })
 
-test.only('filterDataByAge returns expected models given an age to filter by', () => {
+test('filterDataByAge returns expected models given an age to filter by', () => {
 
   const expectedResult = [
     {
@@ -98,4 +98,10 @@ test.only('filterDataByAge returns expected models given an age to filter by', (
     }
   ]
   expect(filterDataByAge(exampleData, 76)).toEqual(expectedResult)
+})
+
+test('GetmodelsInlocation can filter models by both location and age', () => {
+  console.log = jest.fn()
+  getModelsInLocation(exampleData, 'Springfield', 63)
+  expect(console.log.mock.calls[0][0]).toBe('Krusty the Clown')
 })
